@@ -176,11 +176,58 @@ interface ImageWithLegend {
 }
 ```
 
+## Usage Examples
+
+### Basic Gallery
+```ts
+defineField({
+  name: 'gallery',
+  title: 'Image Gallery',
+  type: 'array',
+  of: [{ type: 'object', fields: [
+    { name: 'image', type: 'cloudinary.asset' },
+    { name: 'caption', type: 'string' }
+  ]}],
+  components: { input: CloudinaryGalleryInput },
+  options: {
+    cloudinary: {
+      cloudName: 'my-cloud',
+      uploadPreset: 'my-preset'
+    }
+  } as any
+})
+```
+
+### Advanced Configuration
+```ts
+defineField({
+  name: 'portfolio',
+  title: 'Portfolio Images',
+  type: 'array',
+  of: [{ type: 'object', fields: [
+    { name: 'image', type: 'cloudinary.asset' },
+    { name: 'title', type: 'string' },
+    { name: 'description', type: 'text' }
+  ]}],
+  components: { input: CloudinaryGalleryInput },
+  options: {
+    cloudinary: {
+      cloudName: 'my-cloud',
+      uploadPreset: 'portfolio-uploads',
+      folder: 'portfolio/2024',
+      maxFiles: 50,
+      sources: ['local', 'url', 'camera'],
+      multiple: true
+    }
+  } as any
+})
+```
+
 ## Development
 
 ```bash
 # Clone the repository
-git clone https://github.com/victorbostaetter/sanity-plugin-cloudinary-gallery-input.git
+git clone https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input.git
 cd sanity-plugin-cloudinary-gallery-input
 
 # Install dependencies
@@ -196,6 +243,42 @@ npm run dev
 npm run build
 ```
 
+## Dependencies
+
+### Peer Dependencies
+- `react` >= 18
+- `react-dom` >= 18
+- `sanity` >= 3
+- `@sanity/ui` >= 1
+- `@dnd-kit/core` >= 6
+- `@dnd-kit/sortable` >= 7
+- `@dnd-kit/utilities` >= 3
+- `uuid` >= 9
+
+### Required Sanity Plugin
+- `sanity-plugin-cloudinary` - Official Cloudinary integration
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Cloudinary configuration required" message**:
+   - Ensure you've added the `options.cloudinary` configuration
+   - Verify your `cloudName` and `uploadPreset` are correct
+
+2. **TypeScript errors with custom options**:
+   - Use `as any` type assertion for the options object
+   - Or create custom type definitions
+
+3. **Upload widget not loading**:
+   - Check your Cloudinary upload preset is unsigned
+   - Verify your cloud name is correct
+   - Ensure the Cloudinary script is loading properly
+
+4. **Drag and drop not working**:
+   - Ensure all `@dnd-kit` dependencies are installed
+   - Check that the component is not in read-only mode
+
 ## Contributing
 
 1. Fork the repository
@@ -210,4 +293,13 @@ MIT © Victor Bostaetter
 
 ## Support
 
-If you encounter any issues or have questions, please [open an issue](https://github.com/victorbostaetter/sanity-plugin-cloudinary-gallery-input/issues) on GitHub.
+If you encounter any issues or have questions, please [open an issue](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/issues) on GitHub.
+
+## Changelog
+
+### 0.1.0
+- Initial release
+- Batch image upload with Cloudinary
+- Drag and drop reordering
+- Title and caption support
+- Configurable upload options
