@@ -2,6 +2,12 @@
 
 A Sanity Studio input component for batch uploading and managing Cloudinary images with titles/captions and drag-and-drop ordering.
 
+## To come
+
+Use multiple text fields instead of just 2
+Deduplication enhance for cloudinary upload
+Adding more sanity types and not only text
+
 ## Features
 
 - 🚀 **Batch Upload**: Upload multiple images at once using Cloudinary's upload widget
