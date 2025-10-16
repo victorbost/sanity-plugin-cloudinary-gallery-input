@@ -1,5 +1,5 @@
 {
-  "name": "sanity-plugin-cloudinary-gallery-input",
+  "name": "batch-upload-sanity-plugin-cloudinary",
   "version": "0.1.0",
   "description": "A Sanity Studio input to batch upload and manage Cloudinary images with titles/captions and drag/drop ordering.",
   "license": "MIT",
@@ -27,6 +27,13 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts src/CloudinaryGalleryInput.tsx --dts --format esm --clean",
     "dev": "tsup --watch",
