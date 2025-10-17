@@ -1,12 +1,12 @@
-# sanity-plugin-cloudinary-gallery-input
+# batch-upload-sanity-plugin-cloudinary
 
 A Sanity Studio input component for batch uploading and managing Cloudinary images with titles/captions and drag-and-drop ordering.
 
-## To come
+## In the pipe
 
-Use multiple text fields instead of just 2
-Deduplication enhance for cloudinary upload
-Adding more sanity types and not only text
+- Use multiple text fields instead of just 2
+- Deduplication enhance for cloudinary uploadfunctionality
+- Adding more sanity types and not only text
 
 ## Features
 
@@ -20,11 +20,11 @@ Adding more sanity types and not only text
 ## Installation
 
 ```bash
-npm install sanity-plugin-cloudinary-gallery-input
+npm install batch-upload-sanity-plugin-cloudinary
 # or
-pnpm add sanity-plugin-cloudinary-gallery-input
+pnpm add batch-upload-sanity-plugin-cloudinary
 # or
-yarn add sanity-plugin-cloudinary-gallery-input
+yarn add batch-upload-sanity-plugin-cloudinary
 ```
 
 ## Prerequisites
@@ -69,7 +69,7 @@ export default defineConfig({
 
 ```ts
 // schemaTypes/album.ts
-import {CloudinaryGalleryInput} from 'sanity-plugin-cloudinary-gallery-input'
+import {CloudinaryGalleryInput} from 'batch-upload-sanity-plugin-cloudinary'
 import {defineField} from 'sanity'
 import type {ComponentType} from 'react'
 import type {ArrayOfObjectsInputProps} from 'sanity'
@@ -233,8 +233,8 @@ defineField({
 
 ```bash
 # Clone the repository
-git clone https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input.git
-cd sanity-plugin-cloudinary-gallery-input
+git clone https://github.com/victorbost/batch-upload-sanity-plugin-cloudinary.git
+cd batch-upload-sanity-plugin-cloudinary
 
 # Install dependencies
 npm install
@@ -299,7 +299,7 @@ MIT © Victor Bostaetter
 
 ## Support
 
-If you encounter any issues or have questions, please [open an issue](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/issues) on GitHub.
+If you encounter any issues or have questions, please [open an issue](https://github.com/victorbost/batch-upload-sanity-plugin-cloudinary/issues) on GitHub.
 
 ## Changelog
 
