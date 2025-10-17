@@ -1,6 +1,6 @@
 {
   "name": "batch-upload-sanity-plugin-cloudinary",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Sanity Studio input to batch upload and manage Cloudinary images with titles/captions and drag/drop ordering.",
   "license": "MIT",
   "author": "Victor Bostaetter",
