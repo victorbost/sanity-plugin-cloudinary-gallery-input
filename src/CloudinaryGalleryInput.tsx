@@ -191,8 +191,55 @@ const SortableItem = React.memo(function SortableItem({
                 }
                 if (field.type === 'text') {
                   return (
-                    <TextArea
-                      key={field.name}
+                    <Stack key={field.name} space={1}>
+                      <Label size={0} muted>{field.title}</Label>
+                      <TextArea
+                        value={String(localFields[field.name] ?? '')}
+                        onChange={(e) => {
+                          const value = e.currentTarget.value
+                          setLocalFields((prev) => ({...prev, [field.name]: value}))
+                        }}
+                        onBlur={() => handleFieldBlur(field.name)}
+                        placeholder={field.placeholder ?? field.title}
+                        rows={field.rows ?? 3}
+                        readOnly={readOnly}
+                      />
+                    </Stack>
+                  )
+                }
+                if (field.type === 'number') {
+                  return (
+                    <Stack key={field.name} space={1}>
+                      <Label size={0} muted>{field.title}</Label>
+                      <TextInput
+                        type="number"
+                        value={String(localFields[field.name] ?? '')}
+                        onChange={(e) => {
+                          const value = e.currentTarget.value
+                          setLocalFields((prev) => ({...prev, [field.name]: value}))
+                        }}
+                        onBlur={() => {
+                          const raw = localFields[field.name]
+                          const num = raw === '' ? undefined : Number(raw)
+                          const stored = item[field.name]
+                          if (num === stored) return
+                          const patch =
+                            num === undefined || isNaN(num as number)
+                              ? PatchEvent.from([unset([{_key: item._key}, field.name])])
+                              : PatchEvent.from([set(num, [{_key: item._key}, field.name])])
+                          onChange(patch)
+                        }}
+                        placeholder={field.placeholder ?? field.title}
+                        readOnly={readOnly}
+                      />
+                    </Stack>
+                  )
+                }
+                // string and url
+                return (
+                  <Stack key={field.name} space={1}>
+                    <Label size={0} muted>{field.title}</Label>
+                    <TextInput
                       value={String(localFields[field.name] ?? '')}
                       onChange={(e) => {
                         const value = e.currentTarget.value
@@ -200,50 +247,9 @@ const SortableItem = React.memo(function SortableItem({
                       }}
                       onBlur={() => handleFieldBlur(field.name)}
                       placeholder={field.placeholder ?? field.title}
-                      rows={field.rows ?? 3}
                       readOnly={readOnly}
                     />
-                  )
-                }
-                if (field.type === 'number') {
-                  return (
-                    <TextInput
-                      key={field.name}
-                      type="number"
-                      value={String(localFields[field.name] ?? '')}
-                      onChange={(e) => {
-                        const value = e.currentTarget.value
-                        setLocalFields((prev) => ({...prev, [field.name]: value}))
-                      }}
-                      onBlur={() => {
-                        const raw = localFields[field.name]
-                        const num = raw === '' ? undefined : Number(raw)
-                        const stored = item[field.name]
-                        if (num === stored) return
-                        const patch =
-                          num === undefined || isNaN(num as number)
-                            ? PatchEvent.from([unset([{_key: item._key}, field.name])])
-                            : PatchEvent.from([set(num, [{_key: item._key}, field.name])])
-                        onChange(patch)
-                      }}
-                      placeholder={field.placeholder ?? field.title}
-                      readOnly={readOnly}
-                    />
-                  )
-                }
-                // string and url
-                return (
-                  <TextInput
-                    key={field.name}
-                    value={String(localFields[field.name] ?? '')}
-                    onChange={(e) => {
-                      const value = e.currentTarget.value
-                      setLocalFields((prev) => ({...prev, [field.name]: value}))
-                    }}
-                    onBlur={() => handleFieldBlur(field.name)}
-                    placeholder={field.placeholder ?? field.title}
-                    readOnly={readOnly}
-                  />
+                  </Stack>
                 )
               })}
             </Stack>
@@ -393,13 +399,18 @@ export default function CloudinaryGalleryInput(props: ArrayOfObjectsInputProps<G
           </SortableContext>
         </DndContext>
         <Card padding={3}>
-          <Button
-            text="Upload Images"
-            tone="primary"
-            onClick={handleUpload}
-            disabled={readOnly}
-            style={{width: '100%'}}
-          />
+          <Flex align="center" gap={3}>
+            <Button
+              text="Upload Images"
+              tone="primary"
+              onClick={handleUpload}
+              disabled={readOnly}
+              style={{flex: 1}}
+            />
+            <Text size={1} muted style={{whiteSpace: 'nowrap'}}>
+              {value.length} / {resolvedConfig.maxFiles}
+            </Text>
+          </Flex>
         </Card>
       </div>
     </Stack>

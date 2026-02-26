@@ -7,3 +7,5 @@ export const cloudinaryGalleryInput = definePlugin(() => ({
 
 export {CloudinaryGalleryInput}
 export type {CloudinaryOptions, GalleryItem, GalleryFieldDescriptor, ImageData} from './types'
+export {defineCloudinaryGalleryField} from './utils/defineCloudinaryGalleryField'
+export type {CloudinaryGalleryFieldOptions, DefineCloudinaryGalleryFieldConfig} from './utils/defineCloudinaryGalleryField'
