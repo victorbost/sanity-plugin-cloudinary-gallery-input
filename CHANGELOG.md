@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/compare/v0.2.1...v0.2.2) (2026-02-26)
+
+
+### Bug Fixes
+
+* capture e.currentTarget.value before setState updater to prevent null ref error ([1dc18ff](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/commit/1dc18ff2c81f3fce61a29770e9431c213549c529))
+
 ## [0.2.1](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/compare/v0.1.2...v0.2.1) (2026-02-26)
 
 ## [0.1.2] - 2024-01-01
