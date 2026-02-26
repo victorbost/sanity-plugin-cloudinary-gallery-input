@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.2.1](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/compare/v0.1.2...v0.2.1) (2026-02-26)
+
 ## [0.1.2] - 2024-01-01
 
 ### Bug Fixes
