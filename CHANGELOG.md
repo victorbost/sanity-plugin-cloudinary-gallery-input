@@ -1,5 +1,12 @@
 # Changelog
 
+# [0.3.0](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/compare/v0.2.2...v0.3.0) (2026-02-26)
+
+
+### Features
+
+* add field labels, image count indicator, and defineCloudinaryGalleryField helper ([76be3db](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/commit/76be3dba469face57f94e38145545966478460db))
+
 ## [0.2.2](https://github.com/victorbost/sanity-plugin-cloudinary-gallery-input/compare/v0.2.1...v0.2.2) (2026-02-26)
 
 
