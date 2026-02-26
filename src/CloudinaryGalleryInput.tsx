@@ -194,9 +194,10 @@ const SortableItem = React.memo(function SortableItem({
                     <TextArea
                       key={field.name}
                       value={String(localFields[field.name] ?? '')}
-                      onChange={(e) =>
-                        setLocalFields((prev) => ({...prev, [field.name]: e.currentTarget.value}))
-                      }
+                      onChange={(e) => {
+                        const value = e.currentTarget.value
+                        setLocalFields((prev) => ({...prev, [field.name]: value}))
+                      }}
                       onBlur={() => handleFieldBlur(field.name)}
                       placeholder={field.placeholder ?? field.title}
                       rows={field.rows ?? 3}
@@ -210,9 +211,10 @@ const SortableItem = React.memo(function SortableItem({
                       key={field.name}
                       type="number"
                       value={String(localFields[field.name] ?? '')}
-                      onChange={(e) =>
-                        setLocalFields((prev) => ({...prev, [field.name]: e.currentTarget.value}))
-                      }
+                      onChange={(e) => {
+                        const value = e.currentTarget.value
+                        setLocalFields((prev) => ({...prev, [field.name]: value}))
+                      }}
                       onBlur={() => {
                         const raw = localFields[field.name]
                         const num = raw === '' ? undefined : Number(raw)
@@ -234,9 +236,10 @@ const SortableItem = React.memo(function SortableItem({
                   <TextInput
                     key={field.name}
                     value={String(localFields[field.name] ?? '')}
-                    onChange={(e) =>
-                      setLocalFields((prev) => ({...prev, [field.name]: e.currentTarget.value}))
-                    }
+                    onChange={(e) => {
+                      const value = e.currentTarget.value
+                      setLocalFields((prev) => ({...prev, [field.name]: value}))
+                    }}
                     onBlur={() => handleFieldBlur(field.name)}
                     placeholder={field.placeholder ?? field.title}
                     readOnly={readOnly}
